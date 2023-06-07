@@ -1,5 +1,5 @@
 #include <iostream>
-#include <stdlib.h>
+
 using namespace std;
 
 int main(int argc, char const *argv[])
@@ -20,6 +20,6 @@ int main(int argc, char const *argv[])
     cout <<"\nEl promedio de las notas ingresadas es: "<<sumaProm<< endl;
 
 
-    system("pause");
+    
     return 0;
 }
