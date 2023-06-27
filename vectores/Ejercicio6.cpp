@@ -25,10 +25,14 @@ int main()
     int vectorMitad[15];
     int vectorDoble[15];
 
-    cargarOrdenado(vector, len, num); // Llamamos la funcion para carga el vector ordenadamente
-    mostrar(vector, len);             // Mostramos el vector ordenado
+    cout << "--------A CONTINUACION DEBERA INGRESAR VALORES PARA CARGAR EL VECTOR-------" << endl;
+    cout << endl;
 
-    cout << "\n\n-----------------------------------------------" << endl; // linea para separar resultados
+    cargarOrdenado(vector, len, num); // Llamamos la funcion para carga el vector ordenadamente
+    cout << "\nEl vector ordenado es: " << endl;
+    mostrar(vector, len); // Mostramos el vector ordenado
+
+    cout << "\n_____________________________________________________________________" << endl; // linea para separar resultados
 
     int sumar = sumatoria(vector, len);
     cout << "La sumatoria de los valores ingresados es: " << sumar << endl;
@@ -39,21 +43,17 @@ int main()
     int posMin = valorMin(vector, len);
     cout << "\nEl minimo valor ingresado es : " << vector[posMin] << endl;
 
-    
     // llamamos la funcion para mostrar el vector mitad
-    generarMitad(vector, len,vectorMitad);
-    //mostramos el vector mitad
+    generarMitad(vector, len, vectorMitad);
+    // mostramos el vector mitad
     cout << "\nEl vector midad del original es: " << endl;
-    mostrar(vectorMitad,len);
+    mostrar(vectorMitad, len);
 
     // llamamos la funcion para mostrar el vector doble
-    generarDoble(vector, len,vectorDoble);
-    //mostramos el vector mitad
+    generarDoble(vector, len, vectorDoble);
+    // mostramos el vector mitad
     cout << "\nEl vector doble del original es: " << endl;
-    mostrar(vectorDoble,len);
-
-
-
+    mostrar(vectorDoble, len);
 
     return 0;
 }
@@ -66,7 +66,7 @@ void cargarOrdenado(int vec[], int &len, int valor)
 
     while (i < 15 && valor != 0)
     {
-        int j = len - 1; // inicializar la variable j con el último índice válido del vector vec o sea j=14
+        int j = len - 1; // inicializar la variable j con el ultimo indice valido del vector vec o sea j=14
         while (j >= 0 && vec[j] > valor)
         {
             vec[j + 1] = vec[j];
@@ -83,7 +83,7 @@ void cargarOrdenado(int vec[], int &len, int valor)
 
 void mostrar(int vec[], int len)
 {
-    cout << "\nEl vector ordenado es: " << endl;
+
     for (int i = 0; i < len; i++)
     {
         cout << "  " << vec[i];
@@ -144,11 +144,11 @@ void generarMitad(int vec[], int len, int mitadVec[])
         mitadVec[i] = vec[i] / 2;
     }
 }
-//e. Genere un tercer vector con el doble de cada valor cargado en el vector original 
+// e. Genere un tercer vector con el doble de cada valor cargado en el vector original
 void generarDoble(int vec[], int len, int dobleVec[])
 {
     for (int i = 0; i < len; i++)
     {
-        dobleVec[i] = vec[i]*2;
+        dobleVec[i] = vec[i] * 2;
     }
 }
