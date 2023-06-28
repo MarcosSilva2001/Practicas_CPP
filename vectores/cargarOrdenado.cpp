@@ -4,6 +4,7 @@ using namespace std;
 
 void cargarOrdenado(int vec[], int &len, int tam);
 void mostrar(int vec[], int len);
+
 int main()
 {
 
@@ -11,26 +12,25 @@ int main()
     cout << "Ingrese el tamaño del arreglo: ";
     cin >> tam;
 
-    int array[tam] = {0};  // Inicializa todas las posiciones en cero
-    int len=0;
+    int array[tam] = {0}; // Inicializa todas las posiciones en cero
+    int len = 0;
 
     cout << "\nEl arreglo inicializado en cero es: " << endl;
     mostrar(array, tam);
-   
 
     cargarOrdenado(array, len, tam);
 
     cout << "\nEl arreglo ordenado es: " << endl;
     mostrar(array, len);
 
-
     return 0;
 }
 
-void cargarOrdenado(int vec[], int& len, int tam)
+void cargarOrdenado(int vec[], int &len, int tam)
 {
     int valor;
-    cout << "\n\nA continuacion cargue el arreglo\n" << endl;
+    cout << "\n\nA continuacion cargue el arreglo\n"
+         << endl;
 
     for (int i = 0; i < tam; i++)
     {
@@ -57,5 +57,4 @@ void mostrar(int vec[], int len)
     {
         cout << "  " << vec[i];
     }
-
 }
