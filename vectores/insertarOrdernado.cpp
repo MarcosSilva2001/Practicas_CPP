@@ -4,7 +4,7 @@ using namespace std;
 
 const int valorInicial = 0;
 
-void inicializar(int vec[], int tam);
+void inicializar(int vec[], int tam, int valorIni);
 void insertar(int vec[], int &len, int valor, int pos); // insertar un valor en el vector
 void insertarOrdenado(int vec[], int &len, int valor);  // insertar de manera ordenada un valor en el vector
 void mostrar(int vec[], int len);
@@ -18,7 +18,7 @@ int main()
     int len = 0;
     int num;
 
-    inicializar(numeros, n);
+    inicializar(numeros, n, valorInicial);
 
     cout << "Cargue el vector: " << endl;
     for (int i = 0; i < n; i++)
@@ -34,11 +34,11 @@ int main()
 }
 
 // procedimientos
-void inicializar(int vec[], int tam)
+void inicializar(int vec[], int tam, int valorIni)
 {
     for (int i = 0; i < tam; i++)
     {
-        vec[i] = valorInicial;
+        vec[i] = valorIni;
     }
 }
 void insertar(int vec[], int &len, int valor, int pos)
