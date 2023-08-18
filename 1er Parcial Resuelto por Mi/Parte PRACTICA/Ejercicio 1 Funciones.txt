@@ -1,0 +1,38 @@
+/* 1)  */
+
+// a)Desarrolle una funcion que dado un año diga si se juraga las olimpiadas
+
+bool Olimpiada(int anio)
+{
+	
+	//verificamos que sea un año divisible por 4 para que sea un año de olimpiadas
+	
+	if(anio % 4 == 0)
+	{
+		return true;
+		
+	}else return false;
+}
+
+//b)Desarrolle un procedimiento que muestre dado un mes (MM) cual es la estacion del año.
+
+void EstacionAnio(int anio)
+{
+	if(anio==1 || anio=2 || anio==12)
+	{
+		cout << "¡¡¡Es Verano!!!" <<endl;
+	}
+	if(anio==3 || anio=4 || anio==5)
+	{
+		cout << "¡¡¡Es Otoño!!!" <<endl;
+	}
+	if(anio==6 || anio=7 || anio==8)
+	{
+		cout << "¡¡¡Es Invierno!!!" <<endl;
+	}
+	if(anio==9 || anio=10 || anio==11)
+	{
+		cout << "¡¡¡Es Primavera!!!" <<endl;
+	}
+
+}

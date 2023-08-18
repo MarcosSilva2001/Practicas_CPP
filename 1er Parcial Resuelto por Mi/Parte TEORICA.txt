@@ -1,0 +1,22 @@
+1) Definicion de Registro y Archivo: 
+
+REGRISTRO: Es una estructura de datos heterogenea que puede agrupar distintos tipos de variables bajo un mismo nombre, las variables del registro 
+	     se llaman campos y tienen un identificador que se puede acceder a cada uno de ellos individualmente por el operador (.)
+
+ARCHIVO: Es un conjunto de datos almacenados en un dispositivo de almacenamiento secundario, los datos que se almacenan pueden o no ser homogeneas,
+         se utiliza para leer o escribir informacion en él.
+
+2) Conceptos de Parametros por Valor y por Referencia:
+
+POR VALOR: Se pasa como parametro una copia de la variable con la que se opera, la original no se modifica.
+POR REFERENCIA: Se envia como parametro la direccion de memoria donde se almacena la varaible , se modifica la variable en el espacio de memoria que está.
+
+
+3) Cree el registro "Laboratorio" que contenga, Nombre y Apellido del Paciente, Fecha de Extracción y cantidad de estudios pedidos.
+
+struct Laboratorio
+{
+	char Nombre_Apellido[30];
+	int Fecha_Extreccion;
+	int Cantidad_Estudios_Pedidos;
+};
