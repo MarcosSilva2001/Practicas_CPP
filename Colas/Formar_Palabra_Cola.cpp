@@ -1,9 +1,9 @@
 /*
-Este programa permite al usuario interactuar a través de un menú de opciones. 
+Este programa permite al usuario interactuar a travï¿½s de un menï¿½ de opciones. 
 Las principales funciones incluyen la capacidad de agregar letras a una cola, 
 la cual se utiliza para formar una palabra en el orden en que se ingresan las letras. 
-El usuario puede visualizar la palabra formada en cualquier momento. Además,
- el menú permite salir del programa cuando el usuario lo desee.
+El usuario puede visualizar la palabra formada en cualquier momento. Ademï¿½s,
+ el menï¿½ permite salir del programa cuando el usuario lo desee.
 */
 
 #include <iostream>
@@ -34,7 +34,7 @@ int main()
 
     do
     {
-        // Opciones del menú
+        // Opciones del menï¿½
         cout << "[1] Insertar una letra" << endl;
         cout << "[2] Mostrar la palabra formada" << endl;
         cout << "[3] Salir" << endl;
@@ -95,15 +95,15 @@ void agregar(Nodo *&colafte, Nodo *&colafin, char letra)
     nuevo_nodo->dato = letra;
     nuevo_nodo->sgte = NULL; // Inicializamos sgte a NULL
 
-    // Verificamos si estamos en una cola vacía o no
+    // Verificamos si estamos en una cola vacï¿½a o no
     if (colafte == NULL)
     {
-        colafte = nuevo_nodo; // Si la cola está vacía, el nuevo nodo es el frente y el final.
+        colafte = nuevo_nodo; // Si la cola estï¿½ vacï¿½a, el nuevo nodo es el frente y el final.
         
     }
     else
     {
-        colafin->sgte = nuevo_nodo; // Si no está vacía, enlazamos el último nodo al nuevo nodo.
+        colafin->sgte = nuevo_nodo; // Si no estï¿½ vacï¿½a, enlazamos el ï¿½ltimo nodo al nuevo nodo.
         
     }
     
@@ -115,16 +115,16 @@ char suprimir(Nodo *&colafte, Nodo *&colafin)
     char ret;
     if (colafte == NULL)
     {
-        cout << "La cola está vacía, no se puede eliminar." << endl;
-        ret = '/'; // Devuelve '/' para indicar que la cola está vacía.
+        cout << "La cola esta vacia, no se puede eliminar." << endl;
+        ret = '/'; // Devuelve '/' para indicar que la cola esta vacia.
     }
     else
     {
         ret = colafte->dato;
         Nodo *aux = colafte;
-        colafte = colafte->sgte; // Si la cola tiene elementos, eliminamos el que está en frente y ahora frente apunta al siguiente
+        colafte = colafte->sgte; // Si la cola tiene elementos, eliminamos el que estï¿½ en frente y ahora frente apunta al siguiente
 
-        // Si colafte es NULL después de eliminar el último elemento, actualiza colafin a NULL también.
+        // Si colafte es NULL despues de eliminar el ultimo elemento, actualiza colafin a NULL tambien.
         if (colafte == NULL)
         {
             colafin = NULL;
