@@ -14,7 +14,7 @@ struct Nodo
 };
 
 void liberar(Nodo *&lista);
-int buscar(Product vec[], int len, Product valor);
+int buscar(Product vec[], int len, int valor);
 
 int mainn(int argc, char **argv)
 {
@@ -27,7 +27,7 @@ int mainn(int argc, char **argv)
 
     while (aux != NULL)
     {
-        pos = buscar(vector, len, aux->info);
+        pos = buscar(vector, len, aux->info.ID);
 
         if (pos != -1)
         {
@@ -53,11 +53,11 @@ void liberar(Nodo *&lista)
     }
 }
 
-int buscar(Product vec[], int len, Product valor)
+int buscar(Product vec[], int len, int valor)
 {
     int i = 0;
 
-    while (i < len && vec[i].ID != valor.ID)
+    while (i < len && vec[i].ID != valor)
     {
         i++;
     }
