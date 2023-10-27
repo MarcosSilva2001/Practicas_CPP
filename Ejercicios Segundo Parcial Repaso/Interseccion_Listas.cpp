@@ -114,7 +114,6 @@ Nodo *Lista_Interseccion(Nodo *lista1, Nodo *lista2)
    while (aux != NULL)
    {
       buscado = aux->info;
-
       Encontrado = buscar(lista2, buscado);
 
       if (Encontrado != NULL)

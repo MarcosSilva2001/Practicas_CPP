@@ -24,26 +24,14 @@ struct Comida
     char tipo; // 'H', 'N' o 'P' (Hamburguesas, Nuggets o Pan)
 };
 
-struct Pan
+struct pan
 {
     int codigo;
     int cant_deposito;
 };
 
-struct Nodo
-{
-    Comida info;
-    Nodo *sgte;
-};
-
-void insertarOrdenado(Nodo *&Lista, Comida valor);
-void mostrar(Nodo *Lista);
-void liberar(Nodo *&Lista);
-
 int main(int argc, char const *argv[])
 {
-    // Listas
-    Nodo *lista = NULL; // Lista que contendrá los datos ordenados de los 2 archivos
 
     // Creamos los punteros a los archivos y los abrimos
     FILE *Agosto;
@@ -53,46 +41,64 @@ int main(int argc, char const *argv[])
 
     Comida auxA;
     Comida auxS;
-    Pan raux;
+
+    pan raux;
 
     Agosto = fopen("BurgerFastAgosto.dat", "rb");
     Septiembre = fopen("BurgerFastSeptiembre.dat", "rb");
+    Burger = fopen("BurgerFast.dat", "wb");
     Pan = fopen("Pan.dat", "wb");
 
     // Leemos los archivos
     fread(&auxA, sizeof(Comida), 1, Agosto);
     fread(&auxS, sizeof(Comida), 1, Septiembre);
 
-    // Cargamos la lista ordenada con los datos del archivo y escribimos el archivo para panes
-    while (!feof(Agosto) || !feof(Septiembre))
+    while (!feof(Agosto) && !feof(Septiembre))
     {
-        // Verificar si el tipo de producto es pan, si es el caso agregar al archivo Pan.dat
-        if (auxA.tipo == 'P')
+        // verificamos si el id del producto del archivo agosto es mas chico que del archivo septiembre
+        if (auxA.codigo < auxS.codigo)
         {
-            raux.codigo = auxA.codigo;
-            raux.cant_deposito = auxA.cant_deposito;
-            fwrite(&raux, sizeof(Pan), 1, Pan);
+            // Verificar si el tipo de producto es pan, si es el caso agregar al archivo Pan.dat
+            if (auxA.tipo == 'P')
+            {
+                raux.codigo = auxA.codigo;
+                raux.cant_deposito = auxA.cant_deposito;
+                fwrite(&raux, sizeof(Pan), 1, Pan);
+            }
+            else if (auxS.tipo == 'P')
+            {
+                raux.codigo = auxS.codigo;
+                raux.cant_deposito = auxS.cant_deposito;
+                fwrite(&raux, sizeof(Pan), 1, Pan);
+            }
+            // escribimos en el archivo BurgerFast
+            fwrite(&auxA, sizeof(Comida), 1, Burger);
+            fread(&auxA, sizeof(Comida), 1, Agosto);
         }
-        if (auxS.tipo == 'P')
+        else
         {
-            raux.codigo = auxS.codigo;
-            raux.cant_deposito = auxS.cant_deposito;
-            fwrite(&raux, sizeof(Pan), 1, Pan);
+            if (auxA.tipo == 'P')
+            {
+                raux.codigo = auxA.codigo;
+                raux.cant_deposito = auxA.cant_deposito;
+                fwrite(&raux, sizeof(Pan), 1, Pan);
+            }
+            else if (auxS.tipo == 'P')
+            {
+                raux.codigo = auxS.codigo;
+                raux.cant_deposito = auxS.cant_deposito;
+                fwrite(&raux, sizeof(Pan), 1, Pan);
+            }
+            // escribimos en el archivo BurgerFast
+            fwrite(&auxS, sizeof(Comida), 1, Burger);
+            fread(&auxS, sizeof(Comida), 1, Agosto);
         }
-
-        // Insertamos de manera ordenada los datos del archivo leidas por los regristros auxA y auxS en la lista
-        insertarOrdenado(lista, auxA);
-        insertarOrdenado(lista, auxS);
-
-        fread(&auxA, sizeof(Comida), 1, Agosto);
-        fread(&auxS, sizeof(Comida), 1, Septiembre);
     }
 
     // Salimos del bucle porque uno de los archivos ha terminado
-    // Seguimos cargando la lista con los datos del archivo que aun no termino y escribimos el archivo de pan si es necesario
-    if (!feof(Agosto))
+    while (!feof(Agosto))
     {
-        insertarOrdenado(lista, auxA);
+        fwrite(&auxA, sizeof(Comida), 1, Burger);
         fread(&auxA, sizeof(Comida), 1, Agosto);
 
         if (auxA.tipo == 'P')
@@ -103,9 +109,9 @@ int main(int argc, char const *argv[])
         }
     }
 
-    if (!feof(Septiembre))
+    while (!feof(Septiembre))
     {
-        insertarOrdenado(lista, auxS);
+        fwrite(&auxS, sizeof(Comida), 1, Burger);
         fread(&auxS, sizeof(Comida), 1, Septiembre);
 
         if (auxS.tipo == 'P')
@@ -115,23 +121,11 @@ int main(int argc, char const *argv[])
             fwrite(&raux, sizeof(Pan), 1, Pan);
         }
     }
-    
-    // Cerramos los archivos que ya no usaremos
+    // Cerramos los archivos
     fclose(Agosto);
     fclose(Septiembre);
     fclose(Pan);
-    
-    // Escribimos el archivo BurgerFrast.dat con los datos ordenados de la lista
-    Burger = fopen("BurgerFast.dat", "wb");
-
-    Nodo *auxiliar = lista;
-    while (auxiliar != NULL)
-    {
-        fwrite(&auxiliar->info, sizeof(Comida), 1, Burger);
-        auxiliar = auxiliar->sgte;
-    }
     fclose(Burger);
-    liberar(lista);
 
     return 0;
 }
