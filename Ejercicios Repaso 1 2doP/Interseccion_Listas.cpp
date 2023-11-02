@@ -108,7 +108,7 @@ Nodo *Lista_Interseccion(Nodo *lista1, Nodo *lista2)
    Nodo *lista3 = NULL;
 
    Nodo *aux = lista1;
-   Nodo *Encontrado;
+   Nodo *Encontrado = NULL;
    int buscado;
 
    while (aux != NULL)
