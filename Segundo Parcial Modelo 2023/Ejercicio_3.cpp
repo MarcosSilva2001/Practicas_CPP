@@ -25,6 +25,10 @@ struct Nodo
     Nodo *sgte;
 };
 
+void insertarOrdenado(Nodo *&lista, EleccionesPaso valor);
+void mostrar(Nodo *lista);
+void liberar(Nodo *&lista);
+
 int main(int argc, char const *argv[])
 {
     FILE *paso;
@@ -53,7 +57,7 @@ int main(int argc, char const *argv[])
 
     // ahora escribimos el archivo Paso.dat de manera ordenada usando la lista;
 
-    Nodo *aux = lista;
+    Nodo *aux = listaOrd;
     paso = fopen("Paso.dat", "wb");
 
     while (aux != NULL)
