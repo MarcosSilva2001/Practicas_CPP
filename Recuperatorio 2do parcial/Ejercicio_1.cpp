@@ -16,7 +16,7 @@ struct Nodo
 int suprimir(Nodo *&cfte, Nodo *&cfin);
 void insertarOrdenado(Nood *&lista, int valor);
 void insertar(Nodo *&lista, int valor);
-Nodo *buscar(Nood *lista, int valorBuscado);
+Nodo *buscar(Nodo *lista, int valorBuscado);
 
 // a- Una función que retorne una lista ordenada a partir de la Unión de 2 colas.
 Nodo *lista_UnionColas(Nodo *cfte1, Nodo *cfin1, Nodo *cfte2, Nodo *cfin2)
