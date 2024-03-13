@@ -65,12 +65,13 @@ int main(int argc, char const *argv[])
         fwrite(&aux->info, sizeof(EleccionesPaso), 1, paso);
         aux = aux->sgte;
     }
+    fclose(paso);
 
     // mostramos por parntalla la lista  del partido ordenada por cantidad de votos
     mostrar(listaPartido);
     liberar(listaOrd);
     liberar(listaPartido);
-    fclose(paso);
 
     return 0;
+}
 }
